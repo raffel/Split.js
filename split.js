@@ -351,11 +351,11 @@ var global = this
       // which allows the viewport to be resized without additional logic.
       // Element a's size is the same as offset. b's size is total size - a size.
       // Both sizes are calculated from the initial parent percentage, then the gutter size is subtracted.
-      , adjust = function (offset) {
-            setElementSize(this.a, (offset / this.size * this.percentage), this.aGutterSize)
+      , adjust = function (offset, animate) {
+            setElementSize(this.a, (offset / this.size * this.percentage), this.aGutterSize, animate)
             setElementSize(this.b, (this.percentage - (offset / this.size * this.percentage)), this.bGutterSize)
         }
-      , setElementSize = function (el, size, gutterSize) {
+      , setElementSize = function (el, size, gutterSize, animate) {
             // Split.js allows setting sizes via numbers (ideally), or if you must,
             // by string, like '300px'. This is less than ideal, because it breaks
             // the fluid layout that `calc(% - px)` provides. You're on your own if you do that,
@@ -364,7 +364,8 @@ var global = this
               , props = Object.keys(style)
 
             for (var i = 0; i < props.length; i++) {
-                el.style[props[i]] = style[props[i]]
+                el.style['transition'] = animate;
+                el.style[props[i]] = style[props[i]];
             }
         }
       , setGutterSize = function (gutter, gutterSize) {
@@ -531,12 +532,12 @@ var global = this
     }
 
     return {
-        setSizes: function (sizes) {
+        setSizes: function (sizes, animate) {
             for (var i = 0; i < sizes.length; i++) {
                 if (i > 0) {
                     var pair = pairs[i - 1]
 
-                    setElementSize(pair.a, sizes[i - 1], pair.aGutterSize)
+                    setElementSize(pair.a, sizes[i - 1], pair.aGutterSize, animate)
                     setElementSize(pair.b, sizes[i], pair.bGutterSize)
                 }
             }
@@ -558,7 +559,7 @@ var global = this
 
             return sizes
         },
-        collapse: function (i) {
+        collapse: function (i, animate) {
             var pair
 
             if (i === pairs.length) {
@@ -570,7 +571,7 @@ var global = this
                 pair = pairs[i]
 
                 calculateSizes.call(pair)
-                adjust.call(pair, pair.aGutterSize)
+                adjust.call(pair, pair.aGutterSize, animate)
             }
         },
         destroy: function () {
