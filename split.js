@@ -515,13 +515,13 @@ var global = this
             var aSize = pair.a[getBoundingClientRect]()[dimension]
               , bSize = pair.b[getBoundingClientRect]()[dimension]
 
-            if (aSize < pair.aMin) {
-                pair.aMin = aSize
-            }
+            // if (aSize < pair.aMin) {
+            //     pair.aMin = aSize
+            // }
 
-            if (bSize < pair.bMin) {
-                pair.bMin = bSize
-            }
+            // if (bSize < pair.bMin) {
+            //     pair.bMin = bSize
+            // }
         }
 
         // After the first iteration, and we have a pair object, append it to the
