@@ -119,7 +119,7 @@ var global = this
 
         if (typeof size !== 'string' && !(size instanceof String)) {
             if (!isIE8) {
-                style[dimension] = calc + '(' + size + '% - ' + gutterSize + 'px)'
+                style[dimension] = calc + '(' + size + '% + ' + gutterSize + 'px)'
             } else {
                 style[dimension] = size + '%'
             }
@@ -353,7 +353,7 @@ var global = this
       // Both sizes are calculated from the initial parent percentage, then the gutter size is subtracted.
       , adjust = function (offset, animate) {
             setElementSize(this.a, (offset / this.size * this.percentage), this.aGutterSize, animate)
-            setElementSize(this.b, (this.percentage - (offset / this.size * this.percentage)), this.bGutterSize)
+            setElementSize(this.b, (this.percentage - (offset / this.size * this.percentage)), this.bGutterSize, animate)
         }
       , setElementSize = function (el, size, gutterSize, animate) {
             // Split.js allows setting sizes via numbers (ideally), or if you must,
