@@ -538,7 +538,7 @@ var global = this
                     var pair = pairs[i - 1]
 
                     setElementSize(pair.a, sizes[i - 1], pair.aGutterSize, animate)
-                    setElementSize(pair.b, sizes[i], pair.bGutterSize)
+                    setElementSize(pair.b, sizes[i], pair.bGutterSize, animate)
                 }
             }
         },
