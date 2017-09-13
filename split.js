@@ -566,7 +566,7 @@ var global = this
                 pair = pairs[i - 1]
 
                 calculateSizes.call(pair)
-                adjust.call(pair, pair.size - pair.bGutterSize)
+                adjust.call(pair, pair.size + pair.bGutterSize, animate)
             } else {
                 pair = pairs[i]
 
