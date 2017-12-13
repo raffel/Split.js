@@ -483,14 +483,12 @@ var global = this
 
                 var handle = document.createElement('div')
                 if (options.direction == 'horizontal') {
-                  console.log('horizontal');
                     handle.style.width = '25px'
                     handle.style.position = 'absolute'
                     handle.style.left = '-10px'
                     handle.style.height = '100%'
                     handle.style.cursor = 'e-resize'
                 } else {
-                  console.log('vertical');
                     handle.style.height = '15px'
                     handle.style.position = 'absolute'
                     handle.style.top = '-10px'
